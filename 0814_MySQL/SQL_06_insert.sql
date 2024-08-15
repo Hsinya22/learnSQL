@@ -120,4 +120,10 @@ SELECT * FROM shop_emp
 
 -- err : 因為shop_id不可為空 (但錯誤訊息沒有很清楚)
 INSERT INTO shop_emp (emp_id, emp_name, emp_phone斯)
-VALUES (2, '胖丁', 0911222334)
+VALUES (2, '胖丁', '0911222334')
+
+-- err : 因為emp_phone 需 UNIQUE
+INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
+VALUES (3, '卡比獸', '0911222334','A')
+
+
