@@ -71,12 +71,21 @@ TRUNCATE TABLE table_name;
 -- 實測:資料全不見
 TRUNCATE TABLE lab07;
 
--- 實測:　編號會重編
-INSERT 
+-- 實測:　編號會重編，從1號開始
+INSERT INTO lab07(AvgPrice) VALUES (2);
 
 
 --32. 執行 drop 資料表指令 ，然後再次重新新增資料
 --	  觀察流水號的變化
+-- 語法
+DROP TABLE table_name;
+
+--實測：整個資料『表』不見
+DROP TABLE lab07;
+
+-- 實測：Table 'lab.lab07' doesn't exist
+INSERT INTO lab07(AvgPrice) VALUES (3);
+
 
 
 

@@ -110,20 +110,45 @@ VALUES ('E', '鼎泰豐-台東', '台東縣西區公益路二段251號', 0911222
 INSERT INTO shop (shop_id) VALUES ('G')
 
 -- err , 因為Check =>shop_capital 的值不能小於10
-INSERT INTO shop (shop_id, shop_capital) VALUES('G', 9)
+INSERT INTO shop (shop_id, shop_capital) VALUES('G', 9);
 
 -- 這個寫法OK
 INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
-VALUES (1, '蘋果', 0911222333,'A')
+VALUES (1, '蘋果', 0911222333,'A');
 
 SELECT * FROM shop_emp
 
 -- err : 因為shop_id不可為空 (但錯誤訊息沒有很清楚)
-INSERT INTO shop_emp (emp_id, emp_name, emp_phone斯)
-VALUES (2, '胖丁', '0911222334')
+INSERT INTO shop_emp (emp_id, emp_name, emp_phone)
+VALUES (2, '胖丁', '0911222334');
 
 -- err : 因為emp_phone 需 UNIQUE
 INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
-VALUES (3, '卡比獸', '0911222334','A')
+VALUES (3, '卡比獸', '0911222334','A');--emp_phone不能重複
+
+-- ok
+INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
+VALUES (3, '卡比獸', '0911222335','A');
+
+-------------------------------------
+-- err,因為Ｚ不存在店舖
+INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
+VALUES (4, '超夢', '0911222336','Z');
+
+-- ok E有存在
+INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
+VALUES (4, '超夢', '0911222336','E');
+
+-- 當電話超過10個字，執行成功，但出現警告
+-- Warning : #1265 Data truncated for column 'emp_phone' at row 1
+--                      被截斷的
+INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
+VALUES (5, '比比鳥', '091234567890','E');
+
+
+-- err ,因為 PK(emp_id) 重複 
+INSERT INTO shop_emp (emp_id, emp_name, emp_phone, shop_id)
+VALUES (5, '比比鳥', '0123456788','E');
+
 
 
