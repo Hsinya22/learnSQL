@@ -141,7 +141,7 @@ WHERE  OrderID = 10847;
  --OK, 未使用別名
 SELECT OrderID ,orderdetails.ProductID ,ProductName
 FROM orderdetails 
-JOIN products         ON orderdetails.ProductID = products.ProductID
+JOIN products         ON orderdetails.ProductID = products.ProductID -- 比對數值相同的兩個類型
 WHERE  OrderID = 10847;
 --再多一個資料表
 SELECT orders.OrderID ,orderdetails.ProductID ,ProductName, orders.CustomerID
@@ -163,6 +163,7 @@ FROM employees AS e
 
 
 --整理出員工主管名字
+--先列出想整合的兩個表的選項
 SELECT a.EmployeeID, a.FirstName, a.ReportsTo  FROM employees AS a
 SELECT b.EmployeeID, b.FirstName,              FROM employees AS b
 
