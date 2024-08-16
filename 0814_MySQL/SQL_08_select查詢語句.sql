@@ -126,7 +126,7 @@ ORDER BY Country ASC
 -- ASC：預設 ，小到大
 -- DESC : 大到小
 
--- 指定人出來排
+-- 指定選項出來排
 SELECT Country,CompanyName,ContactName,
         ContactTitle,Address,City,Region,PostalCode,
         Phone 
@@ -149,7 +149,7 @@ LIMIT 擷取某一段資料出來
 SELECT * FROM suppliers
 LIMIT 3;
 
-SELECT * FROM suppliers LIMIT 幾筆 OFFSET 哪裡();
+SELECT * FROM suppliers LIMIT 幾筆 OFFSET 從哪裡開始/跳過幾筆;
 SELECT * FROM suppliers LIMIT 6 OFFSET 3;
 
 LIMIT: 控制筆數
